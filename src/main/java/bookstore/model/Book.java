@@ -51,6 +51,9 @@ public class Book extends AbstractEntity {
     }
 
     public String toString() {
-        return "Book with title: " + getTitle() + " by authors " + getAuthors().toString() + ", costing " + getPrice();
+        return "Book #" + getId() +
+                ", titled '" + getTitle() + "'" +
+                ", by authors " + getAuthors().toString() +
+                ", costing " + getPrice();
     }
 }
