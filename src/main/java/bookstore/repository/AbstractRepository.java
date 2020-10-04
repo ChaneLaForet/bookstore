@@ -3,7 +3,7 @@ package bookstore.repository;
 import bookstore.model.AbstractEntity;
 import bookstore.repository.storage.StorageInterface;
 
-public class AbstractRepository implements RepositoryInterface {
+abstract public class AbstractRepository implements RepositoryInterface {
     /**
      * The storage where the relevant data is kept.
      */

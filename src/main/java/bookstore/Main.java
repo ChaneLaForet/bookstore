@@ -23,6 +23,7 @@ public class Main {
 
     /**
      * Adds some test books.
+     *
      * @param bookRepository
      */
     private static void addTestBookData(BookRepository bookRepository) {

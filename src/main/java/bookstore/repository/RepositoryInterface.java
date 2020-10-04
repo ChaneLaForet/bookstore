@@ -13,14 +13,26 @@ public interface RepositoryInterface {
 
     /**
      * Finds one entity by ID.
+     *
      * @param entityClass Class of the entity to find.
-     * @param id The entity ID.
      */
     AbstractEntity findOne(Class<? extends AbstractEntity> entityClass, int id);
 
-    Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity>entityClass);
+    /**
+     * Finds all entities of type.
+     *
+     * @param entityClass Class of the entity to find.
+     */
+    Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass);
 
+    /**
+     * Deletes the given entity.
+     */
     AbstractEntity delete(AbstractEntity entity);
 
+    /**
+     * Deletes the entity of the given class with the given ID.
+     * @param entityClass Class of the entity to find.
+     */
     AbstractEntity deleteById(Class<? extends AbstractEntity> entityClass, int id);
 }

@@ -11,8 +11,6 @@ public class Book extends AbstractEntity {
     String description;
     float price;
 
-    public Book() {}
-
     public Book(String title, List<String> authors, String description, float price) {
         this.title = title;
         this.authors = authors;

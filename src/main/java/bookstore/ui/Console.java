@@ -3,6 +3,7 @@ package bookstore.ui;
 import bookstore.model.Book;
 import bookstore.service.BookService;
 import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +19,7 @@ public class Console {
 
     /**
      * Constructor.
+     *
      * @param bookService
      */
     public Console(BookService bookService) {
@@ -29,7 +31,7 @@ public class Console {
      * Aggregates the menu options to display to the user.
      */
     private void buildMenu() {
-        addMenuOption( "Show books", "handleShowBooks");
+        addMenuOption("Show books", "handleShowBooks");
         addMenuOption("Exit", null);
     }
 
@@ -37,7 +39,7 @@ public class Console {
      * Adds an option to the menu.
      *
      * @param optionText The text to display to the user.
-     * @param method The name of the method that should be called when the user selects the option.
+     * @param method     The name of the method that should be called when the user selects the option.
      */
     private void addMenuOption(String optionText, String method) {
         ImmutablePair<String, String> option = new ImmutablePair<>(optionText, method);
