@@ -1,20 +1,27 @@
 package bookstore.ui;
 
+import bookstore.model.Book;
+import bookstore.service.BookService;
 import org.apache.commons.lang3.tuple.ImmutablePair;
-
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
 
 public class Console {
     /**
      * The options available to the user.
      */
     private final List<ImmutablePair<String, String>> menuOptions = new ArrayList<>();
+    private final BookService bookService;
 
     /**
      * Constructor.
+     * @param bookService
      */
-    public Console() {
+    public Console(BookService bookService) {
+        this.bookService = bookService;
         buildMenu();
     }
 
@@ -46,7 +53,6 @@ public class Console {
         for (ImmutablePair<String, String> option : menuOptions) {
             System.out.println(i + ". " + option.getLeft());
             i++;
-
         }
 
         System.out.println("Your option: ");
@@ -64,7 +70,13 @@ public class Console {
             showMenu();
 
             int userOption = Integer.parseInt(scanner.next()) - 1;
-            option = menuOptions.get(userOption);
+
+            try {
+                option = menuOptions.get(userOption);
+            } catch (Exception e) {
+                System.out.println("No such option.");
+                continue;
+            }
 
             if (option == null) {
                 System.out.println("We can't do that right now.");
@@ -91,6 +103,7 @@ public class Console {
      * Will display the books that currently exist in the system.
      */
     private void handleShowBooks() {
-        System.out.println("handle show books!");
+        Collection<Book> books = bookService.findAllBooks();
+        books.forEach(System.out::println);
     }
 }
