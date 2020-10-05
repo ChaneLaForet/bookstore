@@ -3,6 +3,8 @@ package bookstore.repository;
 import bookstore.model.AbstractEntity;
 import bookstore.repository.storage.StorageInterface;
 
+import java.util.Collection;
+
 abstract public class AbstractRepository implements RepositoryInterface {
     /**
      * The storage where the relevant data is kept.
@@ -24,7 +26,7 @@ abstract public class AbstractRepository implements RepositoryInterface {
     }
 
     @Override
-    public Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass) {
+    public Collection<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass) {
         return storage.findAll(entityClass);
     }
 

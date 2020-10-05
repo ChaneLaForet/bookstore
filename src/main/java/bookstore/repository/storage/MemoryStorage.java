@@ -75,7 +75,7 @@ public class MemoryStorage implements StorageInterface {
     }
 
     @Override
-    public Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass) {
+    public Collection<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass) {
         Map<Integer, AbstractEntity> entityMap = database.get(getCodeForClass(entityClass));
 
         if (entityMap == null) {

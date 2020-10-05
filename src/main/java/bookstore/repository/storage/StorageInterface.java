@@ -2,6 +2,8 @@ package bookstore.repository.storage;
 
 import bookstore.model.AbstractEntity;
 
+import java.util.Collection;
+
 /**
  * Basic operations that all storage types should implement.
  */
@@ -23,7 +25,7 @@ public interface StorageInterface {
      *
      * @param entityClass Class of the entity to find.
      */
-    Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass);
+    Collection<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass);
 
     /**
      * Deletes the given entity.

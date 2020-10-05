@@ -2,6 +2,8 @@ package bookstore.repository;
 
 import bookstore.model.AbstractEntity;
 
+import java.util.Collection;
+
 /**
  * Interface for CRUD operations on entities.
  */
@@ -23,7 +25,7 @@ public interface RepositoryInterface {
      *
      * @param entityClass Class of the entity to find.
      */
-    Iterable<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass);
+    Collection<AbstractEntity> findAll(Class<? extends AbstractEntity> entityClass);
 
     /**
      * Deletes the given entity.
