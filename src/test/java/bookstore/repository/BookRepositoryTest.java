@@ -18,7 +18,7 @@ class BookRepositoryTest {
         bookRepository.save(
                 new Book(
                         "Deathless",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Catherynne Valente");
                         }},
                         "Russian myth at its best.",
@@ -29,7 +29,7 @@ class BookRepositoryTest {
         bookRepository.save(
                 new Book(
                         "Ask Baba Yaga",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Taisia Kitaiskaia");
                         }},
                         "Go on, ask her.",
@@ -39,7 +39,7 @@ class BookRepositoryTest {
         bookRepository.save(
                 new Book(
                         "You Look Like a Thing and I Love You",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Janelle Shane");
                         }},
                         "Weird AI indeed.",
@@ -60,7 +60,7 @@ class BookRepositoryTest {
         bookRepository.save(
                 new Book(
                         "The Haunting of Hill House",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Shirley Jackson");
                         }},
                         "Come get your cup of stars.",
@@ -95,7 +95,7 @@ class BookRepositoryTest {
                 () -> {
                     bookRepository.delete(new Book(
                             "The Haunting of Hill House",
-                            new ArrayList<>() {{
+                            new ArrayList<String>() {{
                                 add("Shirley Jackson");
                             }},
                             "Come get your cup of stars.",

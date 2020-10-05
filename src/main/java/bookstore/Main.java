@@ -30,7 +30,7 @@ public class Main {
         bookRepository.save(
                 new Book(
                         "Deathless",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Catherynne Valente");
                         }},
                         "Russian myth at its best.",
@@ -41,7 +41,7 @@ public class Main {
         bookRepository.save(
                 new Book(
                         "Ask Baba Yaga",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Taisia Kitaiskaia");
                         }},
                         "Go on, ask her.",
@@ -51,7 +51,7 @@ public class Main {
         bookRepository.save(
                 new Book(
                         "You Look Like a Thing and I Love You",
-                        new ArrayList<>() {{
+                        new ArrayList<String>() {{
                             add("Janelle Shane");
                         }},
                         "Weird AI indeed.",

@@ -68,7 +68,7 @@ public class Console {
 
         ImmutablePair<String, String> option;
         while (true) {
-            System.out.println("=".repeat(50));
+//            System.out.println("=".repeat(50));
             showMenu();
 
             int userOption = Integer.parseInt(scanner.next()) - 1;
