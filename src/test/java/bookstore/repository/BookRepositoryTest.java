@@ -1,5 +1,6 @@
 package bookstore.repository;
 
+import bookstore.model.AbstractEntity;
 import bookstore.model.Book;
 import bookstore.repository.storage.MemoryStorage;
 import org.junit.jupiter.api.*;
@@ -69,5 +70,54 @@ class BookRepositoryTest {
         int currentBooksCount = bookRepository.findAll(Book.class).size();
 
         assertEquals(currentBooksCount, originalBooksCount + 1);
+    }
+
+    @Test
+    void deleteBookShouldDeleteFromDatabase() {
+        bookRepository.deleteById(Book.class, 1);
+        Book book = (Book) bookRepository.findOne(Book.class, 1);
+        assertNull(book);
+    }
+
+    @Test
+    void updateBookShouldUpdateDatabase() {
+        Book book = (Book) bookRepository.findOne(Book.class, 1);
+        book.setPrice((float) 3.5);
+        bookRepository.save(book);
+        Book updatedBook = (Book) bookRepository.findOne(Book.class, 1);
+        assertEquals(3.5, updatedBook.getPrice());
+    }
+
+    @Test
+    void deleteNonExistentBookShouldThrowException() {
+        assertThrows(
+                RuntimeException.class,
+                () -> {
+                    bookRepository.delete(new Book(
+                            "The Haunting of Hill House",
+                            new ArrayList<>() {{
+                                add("Shirley Jackson");
+                            }},
+                            "Come get your cup of stars.",
+                            (float) 23.00
+                    ));
+                }
+        );
+    }
+
+    @Test
+    void deleteEntityShouldDeleteFromDatabase() {
+        Book book = (Book) bookRepository.findOne(Book.class, 1);
+        bookRepository.delete(book);
+    }
+
+    @Test
+    void findNonExistingEntityTypeShouldThrowException() {
+        assertThrows(
+                RuntimeException.class,
+                () -> {
+                    bookRepository.findOne(AbstractEntity.class, 1);
+                }
+        );
     }
 }
