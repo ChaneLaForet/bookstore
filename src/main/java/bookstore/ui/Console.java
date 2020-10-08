@@ -19,7 +19,7 @@ public class Console {
     private final List<ImmutablePair<String, String>> menuOptions = new ArrayList<>();
     private final BookService bookService;
     private final ClientService clientService;
-    private Scanner scanner;
+    private final Scanner scanner;
 
 
     /**
@@ -130,13 +130,21 @@ public class Console {
      */
     private void handleAddClient(){
         System.out.println("First name: ");
-        String firstName = scanner.nextLine();
+        String firstName = scanner.next();
         System.out.println("Last name: ");
-        String lastName = scanner.nextLine();
+        String lastName = scanner.next();
         System.out.println("Email address: ");
-        String emailAddress = scanner.nextLine();
-        clientService.add(firstName,lastName,emailAddress);
-        //conditie: daca il gaseste in rep.
+        String emailAddress = scanner.next();
+        Client newClient = clientService.add(firstName,lastName,emailAddress);
+        // TODO conditie: daca il gaseste in rep.
+        // TODO email unic
+
+        if (newClient.getId() == null) {
+            System.out.println("Something went wrong!");
+            return;
+        }
+
         System.out.println("Client entry created successfully.");
+        System.out.println(newClient);
     }
 }

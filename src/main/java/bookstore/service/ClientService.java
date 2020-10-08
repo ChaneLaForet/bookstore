@@ -37,8 +37,8 @@ public class ClientService {
      * @param lastName the client's last name.
      * @param emailAddress the client's email address.
      */
-    public void add(String firstName, String lastName, String emailAddress) {
+    public Client add(String firstName, String lastName, String emailAddress) {
         Client client = new Client(firstName, lastName, emailAddress);
-        repository.save(client);
+        return (Client) repository.save(client);
     }
 }

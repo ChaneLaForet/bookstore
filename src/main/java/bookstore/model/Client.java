@@ -7,10 +7,8 @@ import java.util.Objects;
  * Represents a client.
  */
 public class Client extends AbstractEntity {
-
     String firstName, lastName, emailAddress;
     List<Address> clientAddresses;
-//    List<PurchasedBook> clientPurchasedBooks;
 
     public Client(String firstName, String lastName, String emailAddress, List<Address> clientAddresses) {
         this.firstName = firstName;
@@ -58,16 +56,10 @@ public class Client extends AbstractEntity {
         this.clientAddresses = clientAddresses;
     }
 
-
     @Override
     public String toString() {
-        return "Client{" +
-                "id=" + id + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", clientAddresses=" + clientAddresses +
-                '}';
+        return "Client #" + id + " named " + firstName + " " + lastName +
+                " with email " + emailAddress;
     }
 
     @Override
@@ -79,10 +71,5 @@ public class Client extends AbstractEntity {
                 getLastName().equals(client.getLastName()) &&
                 getEmailAddress().equals(client.getEmailAddress()) &&
                 Objects.equals(getClientAddresses(), client.getClientAddresses());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getEmailAddress(), getClientAddresses());
     }
 }
