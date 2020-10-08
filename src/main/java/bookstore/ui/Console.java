@@ -1,13 +1,12 @@
 package bookstore.ui;
 
 import bookstore.model.Book;
+
 import bookstore.model.Client;
 import bookstore.service.BookService;
 import bookstore.service.ClientService;
 import org.apache.commons.lang3.tuple.ImmutablePair;
-
 import java.lang.reflect.Method;
-import java.security.KeyException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,13 +21,16 @@ public class Console {
     private final ClientService clientService;
     private Scanner scanner;
 
+
     /**
      * Constructor.
      *
      * @param bookService
+
      * @param clientService
      */
     public Console(BookService bookService, ClientService clientService) {
+        this.scanner = new Scanner(System.in);
         this.bookService = bookService;
         this.clientService = clientService;
         buildMenu();
@@ -73,11 +75,8 @@ public class Console {
      * The method that should be called to get user input and execute commands based on it.
      */
     public void runConsole() {
-        Scanner scanner = new Scanner(System.in);
-
         ImmutablePair<String, String> option;
         while (true) {
-//            System.out.println("=".repeat(50));
             showMenu();
 
             int userOption = Integer.parseInt(scanner.next()) - 1;

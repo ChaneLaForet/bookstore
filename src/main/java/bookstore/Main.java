@@ -88,5 +88,4 @@ public class Main {
         addressList2.add(a2);
         clientRepository.save(new Client("Hannah", "Porter","hannahporter@gmail.com", addressList2));
     }
-
 }

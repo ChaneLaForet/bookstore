@@ -25,9 +25,5 @@ abstract public class AbstractEntity {
     }
 
     @Override
-    public String toString() {
-        return "AbstractEntity{" +
-                "id=" + id +
-                '}';
-    }
+    public abstract  String toString();
 }
