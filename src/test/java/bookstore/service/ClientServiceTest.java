@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClientServiceTest {
-    private StorageInterface storage = new MemoryStorage();
-    private ClientRepository clientRepository = new ClientRepository(storage);
-    private ClientService clientService = new ClientService(clientRepository);
+    private final StorageInterface storage = new MemoryStorage();
+    private final ClientRepository clientRepository = new ClientRepository(storage);
+    private final ClientService clientService = new ClientService(clientRepository);
 
     @Test
     void  addingClients_should_addAllGivenClients() {
@@ -26,9 +27,9 @@ public class ClientServiceTest {
         clientService.add(c3.getFirstName(),c3.getLastName(),c3.getEmailAddress());
 
         assertEquals(3, clientService.findAllClients().size());
-        ArrayList clientList = new ArrayList(clientService.findAllClients());
-        assertEquals(true, c1.equals(clientList.get(0)));
-        assertEquals(true, c2.equals(clientList.get(1)));
-        assertEquals(true, c3.equals(clientList.get(2)));
+        ArrayList<Client> clientList = new ArrayList<>(clientService.findAllClients());
+        assertEquals(clientList.get(0), c1);
+        assertEquals(clientList.get(1), c2);
+        assertEquals(clientList.get(2), c3);
     }
 }
