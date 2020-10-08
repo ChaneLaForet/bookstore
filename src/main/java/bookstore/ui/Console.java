@@ -1,9 +1,11 @@
 package bookstore.ui;
 
 import bookstore.model.Book;
-import bookstore.service.BookService;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 
+import bookstore.model.Client;
+import bookstore.service.BookService;
+import bookstore.service.ClientService;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,14 +18,21 @@ public class Console {
      */
     private final List<ImmutablePair<String, String>> menuOptions = new ArrayList<>();
     private final BookService bookService;
+    private final ClientService clientService;
+    private Scanner scanner;
+
 
     /**
      * Constructor.
      *
      * @param bookService
+
+     * @param clientService
      */
-    public Console(BookService bookService) {
+    public Console(BookService bookService, ClientService clientService) {
+        this.scanner = new Scanner(System.in);
         this.bookService = bookService;
+        this.clientService = clientService;
         buildMenu();
     }
 
@@ -32,6 +41,8 @@ public class Console {
      */
     private void buildMenu() {
         addMenuOption("Show books", "handleShowBooks");
+        addMenuOption("Show clients", "handleShowClients");
+        addMenuOption("Add client", "handleAddClient");
         addMenuOption("Exit", null);
     }
 
@@ -64,11 +75,8 @@ public class Console {
      * The method that should be called to get user input and execute commands based on it.
      */
     public void runConsole() {
-        Scanner scanner = new Scanner(System.in);
-
         ImmutablePair<String, String> option;
         while (true) {
-//            System.out.println("=".repeat(50));
             showMenu();
 
             int userOption = Integer.parseInt(scanner.next()) - 1;
@@ -107,5 +115,28 @@ public class Console {
     private void handleShowBooks() {
         Collection<Book> books = bookService.findAllBooks();
         books.forEach(System.out::println);
+    }
+
+    /**
+     * Will display the clients that currently exist in the system.
+     */
+    private void handleShowClients() {
+        Collection<Client> clients = clientService.findAllClients();
+        clients.forEach(System.out::println);
+    }
+
+    /**
+     * Will add a client entry to the system. Displays a confirmation message.
+     */
+    private void handleAddClient(){
+        System.out.println("First name: ");
+        String firstName = scanner.nextLine();
+        System.out.println("Last name: ");
+        String lastName = scanner.nextLine();
+        System.out.println("Email address: ");
+        String emailAddress = scanner.nextLine();
+        clientService.add(firstName,lastName,emailAddress);
+        //conditie: daca il gaseste in rep.
+        System.out.println("Client entry created successfully.");
     }
 }

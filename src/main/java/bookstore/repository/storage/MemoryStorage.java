@@ -18,6 +18,7 @@ public class MemoryStorage implements StorageInterface {
      *
      * The integer key in the main map is the hash code of the class of the objects in the nested map.
      * E.g. for the books map, the key is the hash code of the Book class.
+     * We're using a navigable map because we need the entries to be sorted by ID.
      */
     private final Map<Integer, NavigableMap<Integer, AbstractEntity>> database = new HashMap<>();
 
@@ -84,4 +85,6 @@ public class MemoryStorage implements StorageInterface {
 
         return new ArrayList<>(entityMap.values());
     }
+
+    // TODO find by field
 }

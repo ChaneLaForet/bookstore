@@ -23,4 +23,7 @@ abstract public class AbstractEntity {
     public Integer getId() {
         return this.id;
     }
+
+    @Override
+    public abstract  String toString();
 }
