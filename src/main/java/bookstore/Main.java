@@ -3,6 +3,8 @@ package bookstore;
 import bookstore.model.Address;
 import bookstore.model.Book;
 import bookstore.model.Client;
+import bookstore.model.validator.BookValidator;
+import bookstore.model.validator.ClientValidator;
 import bookstore.repository.BookRepository;
 import bookstore.repository.ClientRepository;
 import bookstore.repository.storage.MemoryStorage;
@@ -17,10 +19,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         StorageInterface storage = new MemoryStorage();
+
         BookRepository bookRepository = new BookRepository(storage);
         ClientRepository clientRepository = new ClientRepository(storage);
-        BookService bookService = new BookService(bookRepository);
-        ClientService clientService = new ClientService(clientRepository);
+
+        BookValidator bookValidator = new BookValidator();
+        BookService bookService = new BookService(bookRepository, bookValidator);
+
+        ClientValidator clientValidator = new ClientValidator();
+        ClientService clientService = new ClientService(clientRepository, clientValidator);
 
         addTestBookData(bookRepository);
         addTestClientData(clientRepository);

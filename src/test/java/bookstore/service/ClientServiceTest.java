@@ -1,6 +1,7 @@
 package bookstore.service;
 
 import bookstore.model.Client;
+import bookstore.model.validator.ClientValidator;
 import bookstore.repository.ClientRepository;
 import bookstore.repository.storage.MemoryStorage;
 import bookstore.repository.storage.StorageInterface;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ClientServiceTest {
     private final StorageInterface storage = new MemoryStorage();
     private final ClientRepository clientRepository = new ClientRepository(storage);
-    private final ClientService clientService = new ClientService(clientRepository);
+    private final ClientService clientService = new ClientService(clientRepository, new ClientValidator());
 
     @Test
     void  addingClients_should_addAllGivenClients() {

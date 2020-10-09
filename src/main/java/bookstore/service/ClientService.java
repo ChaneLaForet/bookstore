@@ -3,6 +3,7 @@ package bookstore.service;
 
 import bookstore.model.Address;
 import bookstore.model.Client;
+import bookstore.model.validator.ClientValidator;
 import bookstore.repository.ClientRepository;
 
 import java.util.ArrayList;
@@ -11,13 +12,15 @@ import java.util.Collection;
 public class ClientService {
 
     private final ClientRepository repository;
+    private ClientValidator validator;
 
     /**
      * The constructor for the Client Service.
      * @param repository a repository associated with the client service.
      */
-    public ClientService(ClientRepository repository) {
+    public ClientService(ClientRepository repository, ClientValidator validator) {
         this.repository = repository;
+        this.validator = validator;
     }
 
     /**
